@@ -13,6 +13,7 @@ async function determineLatLon (city) {
     console.log("determinLatLon running")
 // console.log("Hit");
     const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${openWeatherApiKey}`);
+    console.log(response)
     const data = await response.json();
     console.log("Data below")
     console.log(data);
@@ -25,15 +26,18 @@ async function fetchWeather(lat, lon){
     console.log("fetchWeather running")
     console.log(lat)
     console.log(lon)
+    const response = await fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${openWeatherApiKey}`);
+    console.log(response)
+    const data = await response.json();
+    console.log("Data below")
+    console.log(data);
 }
 // $.get(`http://api.openweathermap.org/geo/1.0/direct?q=${cityBeingSearch}&appid=${openWeatherApiKey}`, function () {
         
 //         console.log("Hit");
 // });
 
-function intro(name, age) {
-    console.log(`Hi, I'm ${name} and ${age} years old!`);
-}
 
-intro("Joseph", 29);
-intro(25, "Alex");
+for(let i=0; i< 40; i+=20){
+    console.log(i)
+}
