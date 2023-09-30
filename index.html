@@ -12,8 +12,35 @@
 </head>
 
 <body>
-    
-    
+    <header>
+            <h1>Weather Dashboard</h1>
+    </header>
+
+    <main>
+        <div class="searchBar">
+            <div>
+                <h2>Search for a City:</h2>
+            </div>
+            <div>
+                <form class="inputSearch">
+                    <input type="text" id="cityInput" name="cityName"><br>
+                    <input type="submit" value="Search" id="cityBtn" name="cityName"><br>
+                </form>
+            </div>
+            <hr>
+        </div>
+        <div class="weatherBar">
+            <div class="cityStats">
+                <ul>
+                    <li id="name">Type a city to find their stats!</li>
+                    <li id="temp">Temp: </li>
+                    <li id="wind">Wind: </li>
+                    <li id="humidity">Humidity: </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
     <script src="./assets/js/script.js"></script>
 </body>
 
