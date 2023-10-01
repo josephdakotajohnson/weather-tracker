@@ -47,11 +47,11 @@ async function fetchWeather(city, lat, lon){
     $("#todayWind").text("Wind: " + wind + " MPH");
     $("#todayHumidity").text("Humidity: " + humidity + "%");
 
-    createForecast(data, temperature, wind, humidity);
+    createForecast(data);
 }
 
 
-    function createForecast(data, temperature, wind, humidity) {
+    function createForecast(data) {
         $("#forecast").html("");
         for(let i=1; i< 6; i++){
         console.log(i)
