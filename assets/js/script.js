@@ -1,6 +1,6 @@
 // var openWeatherApiGeo = "cd4e5584";
 const openWeatherApiKey = "17ed7b16ac4a8446e56d5d75fbebccd1";
-currentDay = dayjs().format('DD/MM/YYYY');
+const currentDay = dayjs().format('DD/MM/YYYY');
 
 $("#cityBtn").on("click", function handleSearch (event) {
     event.preventDefault();
@@ -43,12 +43,28 @@ async function fetchWeather(lat, lon){
     $("#todayWind").text("Wind: " + wind + " MPH");
     $("#todayHumidity").text("Humidity: " + humidity + "%");
 
-    createForecast(temperature, wind, humidity);
+    createForecast(data, temperature, wind, humidity);
 }
 
 
-    function createForecast(temperature, wind, humidity) {for(let i=0; i< 6; i++){
+    function createForecast(data, temperature, wind, humidity) {
+        $("#forecast").removeData();
+        for(let i=1; i< 6; i++){
         console.log(i)
+        let temperature = data.list[i].main.temp;
+        let wind = data.list[i].wind.speed;
+        let humidity = data.list[i].main.humidity;
+        let nextDay = dayjs().add(i, 'day').format('DD/MM/YYYY');
+        $("#forecast").append(`
+                    <card class="day forecast-card" id="${i}">
+                        <ul class="cardContent cardText">
+                            <li id="date">${nextDay}</li>
+                            <li id="image"></li><br>
+                            <li id="temp">Temp: ${temperature}</li>
+                            <li id="wind">Wind: ${wind} MPH</li>
+                            <li id="humidity">Humidity: ${humidity} %</li>
+                        </ul>
+                    </card>`);
     }}
 
 // $.get(`http://api.openweathermap.org/geo/1.0/direct?q=${cityBeingSearch}&appid=${openWeatherApiKey}`, function () {
