@@ -1,16 +1,18 @@
 // var openWeatherApiGeo = "cd4e5584";
 const openWeatherApiKey = "17ed7b16ac4a8446e56d5d75fbebccd1";
+currentDay = dayjs().format('DD/MM/YYYY');
 
 $("#cityBtn").on("click", function handleSearch (event) {
     event.preventDefault();
     console.log("handleSearch working")
     var locationName = $("#cityInput").val();
     $("#cityInput").val("");
+    $("#todayName").text(locationName + " (" + currentDay + ")");
     determineLatLon(locationName);
     });
 
 async function determineLatLon (city) {
-    console.log("determinLatLon running")
+    console.log("determineLatLon running")
 // console.log("Hit");
     const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${openWeatherApiKey}`);
     console.log(response)
@@ -37,13 +39,21 @@ async function fetchWeather(lat, lon){
     console.log(wind);
     let humidity = data.list[0].main.humidity;
     console.log(humidity);
+    $("#todayTemp").text("Temp: " + temperature);
+    $("#todayWind").text("Wind: " + wind + " MPH");
+    $("#todayHumidity").text("Humidity: " + humidity + "%");
+
+    createForecast(temperature, wind, humidity);
 }
+
+
+    function createForecast(temperature, wind, humidity) {for(let i=0; i< 6; i++){
+        console.log(i)
+    }}
+
 // $.get(`http://api.openweathermap.org/geo/1.0/direct?q=${cityBeingSearch}&appid=${openWeatherApiKey}`, function () {
         
 //         console.log("Hit");
 // });
 
 
-// for(let i=0; i< 40; i+=20){
-//     console.log(i)
-// }
