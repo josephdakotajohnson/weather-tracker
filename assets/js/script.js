@@ -31,6 +31,12 @@ async function fetchWeather(lat, lon){
     const data = await response.json();
     console.log("Data below")
     console.log(data);
+    let temperature = data.list[0].main.temp;
+    console.log(temperature);
+    let wind = data.list[0].wind.speed;
+    console.log(wind);
+    let humidity = data.list[0].main.humidity;
+    console.log(humidity);
 }
 // $.get(`http://api.openweathermap.org/geo/1.0/direct?q=${cityBeingSearch}&appid=${openWeatherApiKey}`, function () {
         
@@ -38,6 +44,6 @@ async function fetchWeather(lat, lon){
 // });
 
 
-for(let i=0; i< 40; i+=20){
-    console.log(i)
-}
+// for(let i=0; i< 40; i+=20){
+//     console.log(i)
+// }
