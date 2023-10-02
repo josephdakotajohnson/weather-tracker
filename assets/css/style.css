@@ -152,3 +152,31 @@ h3 {
     background-size: cover;
     margin: 0px 20px 40px 20px;
 }
+
+.colorChange1 {
+    color: red !important;
+}
+
+.colorChange2 {
+    color: orange !important;
+}
+
+.colorChange3 {
+    color: yellow !important;
+}
+
+.colorChange4 {
+    color: green !important;
+}
+
+.colorChange5 {
+    color: blue !important;
+}
+
+.colorChange6 {
+    color: indigo !important;
+}
+
+.colorChange7 {
+    color: purple !important;
+}

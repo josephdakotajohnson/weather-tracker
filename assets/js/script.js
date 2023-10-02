@@ -2,11 +2,13 @@
 const openWeatherApiKey = "17ed7b16ac4a8446e56d5d75fbebccd1";
 const currentDay = dayjs().format('DD/MM/YYYY');
 const weatherIcon = `http://api.openweathermap.org/img/w/`;
+const formerSearchesList = JSON.parse(localStorage.getItem("formerSearches")) || [];
 
 $("#cityBtn").on("click", function handleSearch (event) {
     event.preventDefault();
     console.log("handleSearch working")
     var locationName = $("#cityInput").val();
+    saveToLocalStorage(locationName);
     $("#cityInput").val("");
     determineLatLon(locationName);
     });
@@ -50,10 +52,10 @@ async function fetchWeather(city, lat, lon){
     createForecast(data);
 }
 
-
-    function createForecast(data) {
-        $("#forecast").html("");
-        for(let i=1; i< 6; i++){
+function createForecast(data) {
+    console.log("createForecast running")
+    $("#forecast").html("");
+    for(let i=1; i< 6; i++){
         console.log(i)
         let nextDay = dayjs().add(i, 'day').format('DD/MM/YYYY');
         let icon = weatherIcon + data.list[i].weather[0].icon + ".png";
@@ -61,16 +63,110 @@ async function fetchWeather(city, lat, lon){
         let wind = data.list[i].wind.speed;
         let humidity = data.list[i].main.humidity;
         $("#forecast").append(`
-                    <card class="day forecast-card" id="${i}">
+                    <card class="day forecast-card" id="card${i}">
                         <ul class="cardContent cardText">
-                            <li id="date">${nextDay}</li>
-                            <image id="image" src="${icon}"></image><br>
-                            <li id="temp">Temp: ${temperature}</li>
-                            <li id="wind">Wind: ${wind} MPH</li>
-                            <li id="humidity">Humidity: ${humidity} %</li>
+                            <li id="date${i}">${nextDay}</li>
+                            <image id="image${i}" src="${icon}"></image><br>
+                            <li id="temp${i}">Temp: ${temperature}</li>
+                            <li id="wind${i}">Wind: ${wind} MPH</li>
+                            <li id="humidity${i}">Humidity: ${humidity} %</li>
                         </ul>
                     </card>`);
-    }}
+                    if (i === 5) {
+                        $("#card5").addClass("secretBtn")
+                        eventListenerDeveloper ();
+                    }
+    }
+    
+}
+
+function eventListenerDeveloper () {
+    $(".secretBtn").off("click", clickityClick);
+    $(".secretBtn").on("click", clickityClick);
+};
+
+function saveToLocalStorage() {
+    console.log("saveToLocalStorage running")
+    formerSearchesList.push($("#cityInput").val());
+    formerSearchesList.sort();
+    // var cityInput = $("#cityInput").val();
+    // var siblingId = $("#cityBtn").attr('class');
+    // parseInt(siblingId);
+    console.log(cityInput);
+    // console.log(siblingId);
+    localStorage.setItem("formerSearches", JSON.stringify(formerSearchesList));
+    // console.log(localStorage.getItem(siblingId));
+    console.log(JSON.parse(localStorage.getItem(formerSearchesList)));
+    getFromLocalStorage();
+}
+
+function getFromLocalStorage() {
+    console.log("getFromLocalStorage running")
+    // if (typeof(Storage) !== "undefined") { // Code for localStorage }
+    //     return;
+    // } else {
+    // var citiesSearched = localStorage.getItem(siblingId);
+    for(let i=1; i< 5; i++){
+        console.log(i)
+        // let nextDay = dayjs().add(i, 'day').format('DD/MM/YYYY');
+        // let icon = weatherIcon + data.list[i].weather[0].icon + ".png";
+        // let temperature = data.list[i].main.temp;
+        // let wind = data.list[i].wind.speed;
+        // let humidity = data.list[i].main.humidity;
+        // $("#forecast").append(`
+        //             <card class="day forecast-card" id="${i}">
+        //                 <ul class="cardContent cardText">
+        //                     <li id="date">${nextDay}</li>
+        //                     <image id="image" src="${icon}"></image><br>
+        //                     <li id="temp">Temp: ${temperature}</li>
+        //                     <li id="wind">Wind: ${wind} MPH</li>
+        //                     <li id="humidity">Humidity: ${humidity} %</li>
+        //                 </ul>
+        //             </card>`);
+}};
+
+function clickityClick() {
+    console.log("clickityClick working")
+    var colorChange = ["1", "2", "3", "4", "5", "6", "7"];
+    var colorChosen1 = Math.floor(Math.random() * colorChange.length) + 1;
+    toString(colorChosen1);
+    $("#todayName, #todayTemp, #todayWind, #todayHumidity").removeClass("colorChange1");
+    $("#todayName, #todayTemp, #todayWind, #todayHumidity").removeClass("colorChange2");
+    $("#todayName, #todayTemp, #todayWind, #todayHumidity").removeClass("colorChange3");
+    $("#todayName, #todayTemp, #todayWind, #todayHumidity").removeClass("colorChange4");
+    $("#todayName, #todayTemp, #todayWind, #todayHumidity").removeClass("colorChange5");
+    $("#todayName, #todayTemp, #todayWind, #todayHumidity").removeClass("colorChange6");
+    $("#todayName, #todayTemp, #todayWind, #todayHumidity").removeClass("colorChange7");
+    $("#todayName, #todayTemp, #todayWind, #todayHumidity").addClass("colorChange" + colorChosen1);
+    // console.log(colorChosen);
+    
+    var colorChosen2 = Math.floor(Math.random() * colorChange.length) + 1;
+    toString(colorChosen2);
+    $("#date1, #temp1, #wind1, #humidity1").removeClass();
+    $("#date1, #temp1, #wind1, #humidity1").addClass("colorChange" + colorChosen2);
+    
+    var colorChosen3 = Math.floor(Math.random() * colorChange.length) + 1;
+    toString(colorChosen3);
+    $("#date2, #temp2, #wind2, #humidity2").removeClass();
+    $("#date2, #temp2, #wind2, #humidity2").addClass("colorChange" + colorChosen3);
+    
+    var colorChosen4 = Math.floor(Math.random() * colorChange.length) + 1;
+    toString(colorChosen4);
+    $("#date3, #temp3, #wind3, #humidity3").removeClass();
+    $("#date3, #temp3, #wind3, #humidity3").addClass("colorChange" + colorChosen4);
+    
+    var colorChosen5 = Math.floor(Math.random() * colorChange.length) + 1;
+    toString(colorChosen5);
+    $("#date4, #temp4, #wind4, #humidity4").removeClass();
+    $("#date4, #temp4, #wind4, #humidity4").addClass("colorChange" + colorChosen5);
+    
+    var colorChosen6 = Math.floor(Math.random() * colorChange.length) + 1;
+    toString(colorChosen6);
+    $("#date5, #temp5, #wind5, #humidity5").removeClass();
+    $("#date5, #temp5, #wind5, #humidity5").addClass("colorChange" + colorChosen2);
+};
+
+    $(".secretBtn").on("click", clickityClick);
 
 // $.get(`http://api.openweathermap.org/geo/1.0/direct?q=${cityBeingSearch}&appid=${openWeatherApiKey}`, function () {
         
