@@ -4,13 +4,21 @@ const currentDay = dayjs().format('DD/MM/YYYY');
 const weatherIcon = `http://api.openweathermap.org/img/w/`;
 const formerSearchesList = JSON.parse(localStorage.getItem("formerSearches")) || [];
 
-$("#cityBtn").on("click", function handleSearch (event) {
+$("#cityBtn").on("click", async function handleSearch (event) {
     event.preventDefault();
     console.log("handleSearch working")
     var locationName = $("#cityInput").val();
-    saveToLocalStorage(locationName);
     $("#cityInput").val("");
-    determineLatLon(locationName);
+    const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${locationName}&appid=${openWeatherApiKey}`);
+    const data = await response.json();
+    console.log(data);
+    if (data.length > 0) {
+        determineLatLon(locationName);
+        saveToLocalStorage(locationName);
+    } else {
+        alert("Invalid response you doo doo head dummy!!")
+        location.reload()
+    }
     });
 
 async function determineLatLon (city) {
@@ -85,45 +93,43 @@ function eventListenerDeveloper () {
     $(".secretBtn").on("click", clickityClick);
 };
 
-function saveToLocalStorage() {
+function saveToLocalStorage(city) {
     console.log("saveToLocalStorage running")
-    formerSearchesList.push($("#cityInput").val());
-    formerSearchesList.sort();
-    // var cityInput = $("#cityInput").val();
-    // var siblingId = $("#cityBtn").attr('class');
-    // parseInt(siblingId);
-    console.log(cityInput);
-    // console.log(siblingId);
-    localStorage.setItem("formerSearches", JSON.stringify(formerSearchesList));
-    // console.log(localStorage.getItem(siblingId));
-    console.log(JSON.parse(localStorage.getItem(formerSearchesList)));
-    getFromLocalStorage();
+    if (!formerSearchesList.includes(city)) {
+        formerSearchesList.push(city);
+        formerSearchesList.sort();
+        // var cityInput = $("#cityInput").val();
+        // var siblingId = $("#cityBtn").attr('class');
+        // parseInt(siblingId);
+        console.log(cityInput);
+        // console.log(siblingId);
+        localStorage.setItem("formerSearches", JSON.stringify(formerSearchesList));
+        // console.log(localStorage.getItem(siblingId));
+        console.log(JSON.parse(localStorage.getItem(formerSearchesList)));
+    }
+        getFromLocalStorage();
 }
 
 function getFromLocalStorage() {
     console.log("getFromLocalStorage running")
-    // if (typeof(Storage) !== "undefined") { // Code for localStorage }
-    //     return;
-    // } else {
-    // var citiesSearched = localStorage.getItem(siblingId);
-    for(let i=1; i< 5; i++){
-        console.log(i)
-        // let nextDay = dayjs().add(i, 'day').format('DD/MM/YYYY');
-        // let icon = weatherIcon + data.list[i].weather[0].icon + ".png";
-        // let temperature = data.list[i].main.temp;
-        // let wind = data.list[i].wind.speed;
-        // let humidity = data.list[i].main.humidity;
-        // $("#forecast").append(`
-        //             <card class="day forecast-card" id="${i}">
-        //                 <ul class="cardContent cardText">
-        //                     <li id="date">${nextDay}</li>
-        //                     <image id="image" src="${icon}"></image><br>
-        //                     <li id="temp">Temp: ${temperature}</li>
-        //                     <li id="wind">Wind: ${wind} MPH</li>
-        //                     <li id="humidity">Humidity: ${humidity} %</li>
-        //                 </ul>
-        //             </card>`);
-}};
+    $("#history").html("");
+
+    var formerSearches = JSON.parse(localStorage.getItem('formerSearches')) || [];
+
+    formerSearches.forEach(function(val) {
+        var button = `<button class="pastCitiesBtn">${val}</button>`
+        $('#history').append(button);
+    });
+
+};
+
+$('#history').on('click', '.pastCitiesBtn', function() {
+    var value = $(this).text();
+
+    determineLatLon(value);
+})
+
+
 
 function clickityClick() {
     console.log("clickityClick working")
@@ -166,11 +172,16 @@ function clickityClick() {
     $("#date5, #temp5, #wind5, #humidity5").addClass("colorChange" + colorChosen2);
 };
 
-    $(".secretBtn").on("click", clickityClick);
+$(".secretBtn").on("click", clickityClick);
 
-// $.get(`http://api.openweathermap.org/geo/1.0/direct?q=${cityBeingSearch}&appid=${openWeatherApiKey}`, function () {
-        
-//         console.log("Hit");
-// });
+$('#clearBtn').on('click', function clearLocalStorage(event) {
+    event.preventDefault();
+    console.log("clearLocalStorage working");
+    // localStorage.removeItem(formerSearches);
+    // location.reload;
+    localStorage.clear();
+    location.reload()
+})
 
 
+getFromLocalStorage();

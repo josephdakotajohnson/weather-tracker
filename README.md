@@ -18,9 +18,9 @@ A dashboard to display the current weather at certain locations
 
  - This website was coded by Joseph Dakota Johnson.
 
- - Instructor Caleb Crum helped me during class by showing me ways to add the time-block classes of past, present, and future. He also helped me figure out how to add an a button to the HTML and a delete function. [Caleb's GitHub account](https://github.com/CalebCrumInstructor)
+ - Instructor Caleb Crum helped me during class by showing me ways to add the buttons of past searches. He also helped me figure out how to pull from the local storage for the button's searches. [Caleb's GitHub account](https://github.com/CalebCrumInstructor)
 
- - Tutor Alexis Gonzalez helped me during a tutoring session by helping me figure out the correct perspective to think on when checking the inplementation and implementing coding and by helping me figure out how to pull from an API appropriately.
+ - Tutor Alexis Gonzalez helped me during a tutoring session by helping me figure out the correct perspective to think on when checking the implementation and implementing coding and by helping me figure out how to pull from an API appropriately.
 
  - My brother (boot camp graduate) helped out by helping me get started on creating my variables for saving to local storage. [Dylan's GitHub account](https://github.com/dylanstormjohnson)
 
@@ -28,18 +28,16 @@ A dashboard to display the current weather at certain locations
 
  - ![HTML](https://img.shields.io/badge/-HTML5-black?style=flat-square&logo=html5)
  - ![CSS](https://img.shields.io/badge/-CSS3-black?style=flat-square&logo=css3)
+ - ![JavaScript](https://img.shields.io/badge/logo-javascript-blue?logo=javascript)
 
 ## Features
 
- - When the user clicks the generate password button, there is a prompt
-    that asks the user the length of the password.
- - Next, there is a prompt that asks the user if there will be any lowercase,
-    uppercase, numeric, or special characters in the password.
- - If the user inputs and invalid length or no characters, the user is
-    given an error response and the application is discontinued.
- - A password is generated meeting the requirements set by the user.
- - I added notes stating what the different parts of the code in JavaScript
-    do.
+ - When the user types in a name of a city and clicks the search button, they will
+    be presented with the current day's icon, temperature, wind, and humidity and a forecast of the next five days forecast.
+ - Then, the user's response is recorded and displayed below in another button that
+    can be clicked to re-display the weather again from local storage
+ - If the user inputs and invalid city, they will be met with an alert that tells
+    them that their answer is invalid.
 
 ## Questions
 

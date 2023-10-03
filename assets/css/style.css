@@ -43,7 +43,7 @@ h2 {
 }
 
 .inputSearch {
-    height: 125px;
+    height: 180px;
     font-size: 14pt;
     margin-left: 25px;
 }
@@ -59,6 +59,27 @@ h2 {
     width: 350px;
     padding: 10px 15px;
     margin: 5px 0;
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+#clearBtn {
+    width: 350px;
+    padding: 10px 15px;
+    margin: 5px 0;
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.push {
+    margin-bottom: 15px;
+}
+
+.pastCitiesBtn {
+    font-size: 14pt;
+    width: 350px;
+    padding: 10px 15px;
+    margin: 5px 25px;
     background-color: var(--secondary-color);
     color: white;
 }
@@ -109,13 +130,65 @@ h3 {
     /* gap: 20px; */
 }
 
-#name {
+#name1 {
     font-family: var(--secondary-font);
     font-size: 50px;
     color: black;
 }
 
-#temp, #wind, #humidity {
+#temp1, #wind1, #humidity1 {
+    font-family: var(--primary-font);
+    margin-bottom: 15px;
+    color: black;
+    font-size: 20px;
+}
+
+#name2 {
+    font-family: var(--secondary-font);
+    font-size: 50px;
+    color: black;
+}
+
+#temp2, #wind2, #humidity2 {
+    font-family: var(--primary-font);
+    margin-bottom: 15px;
+    color: black;
+    font-size: 20px;
+}
+
+#name3 {
+    font-family: var(--secondary-font);
+    font-size: 50px;
+    color: black;
+}
+
+#temp3, #wind3, #humidity3 {
+    font-family: var(--primary-font);
+    margin-bottom: 15px;
+    color: black;
+    font-size: 20px;
+}
+
+#name4 {
+    font-family: var(--secondary-font);
+    font-size: 50px;
+    color: black;
+}
+
+#temp4, #wind4, #humidity4 {
+    font-family: var(--primary-font);
+    margin-bottom: 15px;
+    color: black;
+    font-size: 20px;
+}
+
+#name5 {
+    font-family: var(--secondary-font);
+    font-size: 50px;
+    color: black;
+}
+
+#temp5, #wind5, #humidity5 {
     font-family: var(--primary-font);
     margin-bottom: 15px;
     color: black;
@@ -148,7 +221,7 @@ h3 {
 
 .day {
     min-width: 175px;
-    height: 250px;
+    height: 200px; /* was height: 250px; */
     background-size: cover;
     margin: 0px 20px 40px 20px;
 }
