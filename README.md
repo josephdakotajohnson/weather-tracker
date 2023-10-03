@@ -38,6 +38,8 @@ A dashboard to display the current weather at certain locations
     can be clicked to re-display the weather again from local storage
  - If the user inputs and invalid city, they will be met with an alert that tells
     them that their answer is invalid.
+ - When the user clicks the clear button, the local storage will be cleared.
+ - There is a super hidden secret easter egg that will be hard to find.
 
 ## Questions
 
