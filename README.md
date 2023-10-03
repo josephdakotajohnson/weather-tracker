@@ -22,13 +22,16 @@ A dashboard to display the current weather at certain locations
 
  - Tutor Alexis Gonzalez helped me during a tutoring session by helping me figure out the correct perspective to think on when checking the implementation and implementing coding and by helping me figure out how to pull from an API appropriately.
 
- - My brother (boot camp graduate) helped out by helping me get started on creating my variables for saving to local storage. [Dylan's GitHub account](https://github.com/dylanstormjohnson)
+ - My brother (boot camp graduate) helped out by helping me get started on creating my variables for saving to local storage, helping me figure out the alert if the user's input is invalid, and helping me create the clear button. [Dylan's GitHub account](https://github.com/dylanstormjohnson)
 
 ## Badges
 
  - ![HTML](https://img.shields.io/badge/-HTML5-black?style=flat-square&logo=html5)
  - ![CSS](https://img.shields.io/badge/-CSS3-black?style=flat-square&logo=css3)
  - ![JavaScript](https://img.shields.io/badge/logo-javascript-blue?logo=javascript)
+ - [![jQuery](https://img.shields.io/badge/jQuery-Documentation-blue.svg)](https://api.jquery.com/)
+ - [![Day.js](https://img.shields.io/badge/Day.js-Documentation-blue.svg)](https://day.js.org/)
+ - [![OpenWeather API](https://img.shields.io/badge/OpenWeather%20API-Documentation-blue.svg)](https://openweathermap.org/api)
 
 ## Features
 
@@ -51,4 +54,4 @@ A dashboard to display the current weather at certain locations
  
 ## DeployedApp
 
- - This is a link to the fully deployed application: (https://github.com/josephdakotajohnson).
+ - This is a link to the fully deployed application: (https://josephdakotajohnson.github.io/weather-tracker/).
