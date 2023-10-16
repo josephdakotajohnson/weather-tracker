@@ -1,7 +1,7 @@
 // var openWeatherApiGeo = "cd4e5584";
 const openWeatherApiKey = "17ed7b16ac4a8446e56d5d75fbebccd1";
 const currentDay = dayjs().format('DD/MM/YYYY');
-const weatherIcon = `http://api.openweathermap.org/img/w/`;
+const weatherIcon = `https://api.openweathermap.org/img/w/`;
 const formerSearchesList = JSON.parse(localStorage.getItem("formerSearches")) || [];
 
 $("#cityBtn").on("click", async function handleSearch (event) {
@@ -9,7 +9,7 @@ $("#cityBtn").on("click", async function handleSearch (event) {
     console.log("handleSearch working")
     var locationName = $("#cityInput").val();
     $("#cityInput").val("");
-    const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${locationName}&appid=${openWeatherApiKey}`);
+    const response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${locationName}&appid=${openWeatherApiKey}`);
     const data = await response.json();
     console.log(data);
     if (data.length > 0) {
@@ -24,7 +24,7 @@ $("#cityBtn").on("click", async function handleSearch (event) {
 async function determineLatLon (city) {
     console.log("determineLatLon running")
 // console.log("Hit");
-    const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${openWeatherApiKey}`);
+    const response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${openWeatherApiKey}`);
     console.log(response)
     const data = await response.json();
     console.log("Data below")
