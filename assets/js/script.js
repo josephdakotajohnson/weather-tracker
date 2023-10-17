@@ -38,7 +38,7 @@ async function fetchWeather(city, lat, lon){
     console.log("fetchWeather running")
     console.log(lat)
     console.log(lon)
-    const response = await fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${openWeatherApiKey}`);
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${openWeatherApiKey}`);
     console.log(response)
     const data = await response.json();
     console.log("Data below")
