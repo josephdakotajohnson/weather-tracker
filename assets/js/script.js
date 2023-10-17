@@ -169,7 +169,7 @@ function clickityClick() {
     var colorChosen6 = Math.floor(Math.random() * colorChange.length) + 1;
     toString(colorChosen6);
     $("#date5, #temp5, #wind5, #humidity5").removeClass();
-    $("#date5, #temp5, #wind5, #humidity5").addClass("colorChange" + colorChosen2);
+    $("#date5, #temp5, #wind5, #humidity5").addClass("colorChange" + colorChosen6);
 };
 
 $(".secretBtn").on("click", clickityClick);
